@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>geolocation</title>
+  </head>
+  <body>
+    <input
+      type="button"
+      id="getlocation"
+      value="get location"
+      onclick="getLocation()"
+    />
+    <div></div>
+    <!--<script></script>-->
+    <script>
+      //geographical coordinates for connected users
+      // BOM (window) => navigator | location | history | DOM
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            successLocation,
+            locationError
+          );
+        } else {
+          document.getElementsByTagName("div")[0].innerText =
+            "please update your browser";
+        }
+        console.log(navigator.geolocation);
+      }
+
+      function successLocation(currentPosition) {
+        console.log(
+          currentPosition.coords.latitude,
+          currentPosition.coords.longitude
+        );
+        // console.log('success')
+      }
+
+      function locationError() {
+        console.log("error");
+      }
+    </script>
+  </body>
+</html>
